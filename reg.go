@@ -1,4 +1,4 @@
-package goladash
+package golodash
 
 import "regexp"
 
