@@ -7,7 +7,6 @@ import (
 	"net"
 	"net/url"
 	"os"
-	"regexp"
 	"strconv"
 	"strings"
 	"unicode"
