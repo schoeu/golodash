@@ -2,9 +2,9 @@ package golodash
 
 import (
 	"log"
-	"time"
 	"os"
 	"strings"
+	"time"
 )
 
 // Get cwd path.
