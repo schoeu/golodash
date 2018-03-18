@@ -38,13 +38,22 @@ var (
 		0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0}
 )
 
+type LunarInfo struct {
+	Era        string
+	Zodiac     string
+	Month      string
+	Date       string
+	FullString string
+}
+
 // Date fromat yyyyMMdd, ag: 20150101
-func Lunar(date string) string {
+func Lunar(date string) (LunarInfo, error) {
 	var monCyl, leapMonth int = 0, 0
+	lr := LunarInfo{}
 	t1, _ := time.Parse(timeFormat_yyyy_MM_dd, "1900-01-31 00:00:00")
 	t2, err := time.Parse(timeFormat_yyyyMMdd, date)
 	if err != nil {
-		return "the date format is wrong"
+		return lr, err
 	}
 	offset := int((t2.UnixNano() - t1.UnixNano()) / 1000000 / 86400000)
 	monCyl = 14
@@ -106,7 +115,13 @@ func Lunar(date string) string {
 	if leap {
 		doubleMonth = "闰"
 	}
-	return cyclical() + animalsYear() + "年" + doubleMonth + chineseNumber[month-1] + "月" + getChinaDayString(day)
+
+	lr.Era = cyclical()
+	lr.Zodiac = animalsYear()
+	lr.Month = doubleMonth + chineseNumber[month-1]
+	lr.Date = getChinaDayString(day)
+	lr.FullString = cyclical() + animalsYear() + "年" + doubleMonth + chineseNumber[month-1] + "月" + getChinaDayString(day)
+	return lr, nil
 }
 func animalsYear() string {
 	return animals[(year-4)%12]

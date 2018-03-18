@@ -13,7 +13,7 @@ Utils:
 func GetCwd() string
 func HasValue(str *[]string, r string) (bool, string)
 func GetCurrentDate(date time.Time) string
-func Lunar(date string) string
+func Lunar(date string) (LunarInfo, error)
 ```
 
 IS:
