@@ -8,10 +8,16 @@ go get github.com/schoeu/goladash
 
 ## Full list of functions;
 
+Utils:
 ```
 func GetCwd() string
 func HasValue(str *[]string, r string) (bool, string)
 func GetCurrentDate(date time.Time) string
+func Lunar(date string) string
+```
+
+IS:
+```
 func Range(value, left, right float64)
 func Email(s string) bool
 func URL(str string) bool
