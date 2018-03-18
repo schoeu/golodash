@@ -120,7 +120,7 @@ func Lunar(date string) (LunarInfo, error) {
 	lr.Zodiac = animalsYear()
 	lr.Month = doubleMonth + chineseNumber[month-1]
 	lr.Date = getChinaDayString(day)
-	lr.FullString = cyclical() + animalsYear() + "年" + doubleMonth + chineseNumber[month-1] + "月" + getChinaDayString(day)
+	lr.FullString = lr.Era + lr.Zodiac + "年" + lr.Month + "月" + lr.Date
 	return lr, nil
 }
 func animalsYear() string {
